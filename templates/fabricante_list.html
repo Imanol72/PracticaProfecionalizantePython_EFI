@@ -1,0 +1,20 @@
+{% extends "base_template.html" %}
+
+{% block content %}
+    <h1>Fabricantes</h1>
+    <form action="" method="post">
+        <input type="text" name="nombre" placeholder="Ingrese fabricante">
+        <select name="pais">
+            {% for pais in paises %}
+                <option value="{{ pais.id }}">{{ pais.nombre }}</option>
+            {% endfor %}
+        </select>
+        <button type="submit">Agregar</button>
+    </form>
+    <h2>Lista de Fabricantes</h2>
+    <ul>
+        {% for fabricante in fabricantes %}
+            <li>{{ fabricante.nombre }} ({{ fabricante.pais.nombre }})</li>
+        {% endfor %}
+    </ul>
+{% endblock %} 

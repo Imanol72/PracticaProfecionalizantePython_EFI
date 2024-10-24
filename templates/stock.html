@@ -1,0 +1,39 @@
+{% extends "base_template.html" %}
+
+{% block content %}
+    <h1>Stock</h1>
+    <form action="" method="post">
+        <select name="equipo_id" required>
+            <option value="">Seleccione un equipo</option>
+            {% for equipo in equipos %}
+                <option value="{{ equipo.id }}">{{ equipo.nombre }}</option>
+            {% endfor %}
+        </select>
+        <input type="number" name="cantidad_disponible" placeholder="Cantidad disponible" required>
+        <input type="number" name="cantidad_minima" placeholder="Cantidad mínima" required>
+        <input type="text" name="ubicacion_almacen" placeholder="Ubicación del almacén" required>
+        <button type="submit">Agregar</button>
+    </form>
+
+    <h2>Lista de Stock</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Equipo</th>
+                <th>Cantidad Disponible</th>
+                <th>Cantidad Mínima</th>
+                <th>Ubicación del Almacén</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for stock in stocks %}
+                <tr>
+                    <td>{{ stock.equipo.nombre }}</td>
+                    <td>{{ stock.cantidad_disponible }}</td>
+                    <td>{{ stock.cantidad_minima }}</td>
+                    <td>{{ stock.ubicacion_almacen }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

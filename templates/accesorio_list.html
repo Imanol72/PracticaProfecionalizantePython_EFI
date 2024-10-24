@@ -1,0 +1,34 @@
+{% extends "base_template.html" %}
+
+{% block content %}
+    <h1>Lista Accesorios</h1>
+
+    <form action="" method="post">
+        <input type="text" name="nombre" placeholder="Ingrese accesorio">
+        <select name="compatibilidad">
+            <option value="true">Compatible</option>
+            <option value="false">No compatible</option>
+        </select>
+        <select name="Equipos" id="">
+            {% for equipo in equipos %}
+            <option value="{{ equipo.id }}">{{ equipo.nombre }}</option>
+            {% endfor %}
+        </select>
+        <button type="submit">Agregar Accesorio</button>
+    </form>
+
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>Accesorios</th>
+            <th>Compatibilidad</th>
+        </tr>
+        {% for accesorio in accesorios %}
+        <tr>
+            <td>{{ accesorio.equipo.nombre }}</td>
+            <td>{{ accesorio.nombre }}</td>
+            <td>{{ 'Compatible' if accesorio.compatibilidad else 'No compatible' }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+{% endblock %}

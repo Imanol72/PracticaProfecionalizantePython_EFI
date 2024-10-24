@@ -1,0 +1,51 @@
+PASOS PARA INSTALAR LA APLICACION:
+
+1) Instalar Xampp siguiendo los pasos necesarios segun el sistema operativo que se utiliza.
+https://www.apachefriends.org/es/index.html
+
+2) Clonar el repositorio desde GitHub con el comando.
+Git clone https://github.com/sofigonzalezz1/EFI_parte_1.git
+
+3) Crear un https://github.com/sofigonzalezz1/EFI_parte_1.gitentorno virtual: 
+Para ubuntu con el comando: python3 -m venv venv
+Para windows con el comando: virtualenv venv (si no funciona este comando el de ubuntu puede funcionar)
+
+4) Activar el entorno: 
+Para ubuntu: source venv/bin/activate
+Para windows: venv\Scripts\Activate
+
+5) Activar Xampp: 
+Para ubuntu: sudo /opt/lampp/lampp start
+Para windows: Utilizando el ejecutable activar el server apache y el server mysql
+
+6) Instalar Flask
+Con el comando: pip install Flask Flask_SQLAlchemy Flask_Migrate PyMySQL
+
+7) Realizar la activacion de la base de datos con flask utilizando los comandos: 
+flask db init
+flask db migrate -m "nombre de la migracion"
+flask db upgrade 
+
+Con todo esto configurado podremos correr la aplicacion con el comando Flask run --reload seleccionando la direccion IP
+que nos arroja este comando
+
+Dentro de la aplicacion: 
+1) Recorrer las pestañas para familiarizarse con ellas y cuando este listo para comenzar ir a la pestaña fabricantes
+En la pestaña fabricantes, cargar el fabricante y seleccionar el pais de procedencia.
+
+2) Con los fabricantes cargador dirigirse a marcas y cargar las marcas que se deseen.
+
+3) Luego pasar a modelos y cargar los modelos deseados 
+
+4) Cargar proveedores 
+
+5) Cargar equipos
+
+6) Cargar accesorios 
+
+7) Cargar caracteristicas
+
+8) Cargar stock 
+
+(Estos ultimos 3 pasos pueden realizarse en un orden indistinto)
+
