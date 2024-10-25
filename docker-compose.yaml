@@ -1,0 +1,43 @@
+# sudo docker build --tag first_docker_a_flask_app .
+services: # Lista de servicios
+flask_app: #servicio/app de flask
+  build: # Lista de parámetros desde los cuales construir
+    context: . #contexto
+    dockerfile: Dockerfile #archivo de Dockerfile
+
+
+
+
+# sudo docker build --tag first_docker_a_flask_app .
+# es reemplazado por docker-compose build
+
+
+# docker run -d -p 5005:5005 first_docker_a_flask_app
+# es reemplazado por docker-compose up
+  ports: #puerto contenedor:puerto host
+    - "5005:5005"
+  restart: always #en caso de error o falla
+  volumes:
+    - .:/app # PathHost:PathContainer
+  env_file:
+  - .env
+  depends_on:
+    - mysql_db
+  container_name: mi-contenedor-1
+
+  mysql_db:
+    image: mysql:5.7
+    env_file:
+    - .env
+    environment:
+      - MYSQL_DATABASE=${MYSQL_DATABASE}
+      - MYSQL_USER=${MYSQL_USER}
+      - MYSQL_PASSWORD=${MYSQL_PASSWORD}
+    volumes:
+      - ./.data/db:/var/lib/mysql
+      #- ./init.sql:/docker-entrypoint-initdb.d/init.sql
+    ports:
+      - "3307:3306" # 3307 es el puerto que se expone a mi maquina, 3306 es el puerto expuesto del contenedor.
+    restart: always
+    container_name: contenedor_web
+
